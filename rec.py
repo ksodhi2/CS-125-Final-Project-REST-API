@@ -56,7 +56,7 @@ def similar():
          sNAT = str(data['NAT'])
          sQR = str(data['QR'])
          sSBS = str(data['SBS'])        
-         jstr = '{ "result": ' + get_gened_for_attribute(sACP,sCS,sHUM,sNAT,sQR,sSBS) + '] }'
+         jstr = '{ "result": ' + get_gened_for_attribute(sACP,sCS,sHUM,sNAT,sQR,sSBS) + ' }'
     else:
          jstr = "Not a valid Function"
       #return our reccomendation
