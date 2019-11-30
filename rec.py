@@ -40,8 +40,6 @@ def similar():
        cnt = 0
        jstr = '{ "result": ['
        for element in sorted_similar_courses:
-#          if courseDf.loc[element[0],['Name']].values[0] == course_request:
-#              continue
           if cnt < 5:
              jstr = jstr + get_course_from_index(element[0])+','
           else:
