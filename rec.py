@@ -17,8 +17,25 @@ def get_index_for_course(course):
     return courseDf[courseDf.Name == course].index.values[0]
 
 def get_gened_for_attribute(sACP,sCS,sHUM,sNAT,sQR,sSBS):
-    return courseDf[(courseDf["ACP"] == sACP ) & (courseDf["CS"] == sCS ) & (courseDf["HUM"] == sHUM ) & (courseDf["NAT"] == sNAT ) & (courseDf["QR"] == sQR ) & (courseDf["SBS"] == sSBS )][["Name","Number","GPA","Total Students"]].sort_values('GPA',ascending = False).head(5).to_json(orient='records')
-
+	anyACP = False
+	anyCS = False
+	anyHUM = False
+	anyNAT = False
+	anyQR = False
+	anySBS = False
+	if sACP == "N/A":
+		anyACP = True
+	if sCS == "N/A":
+		anyCS = True
+	if sHUM == "N/A":
+		anyHUM = True
+	if sNAT == "N/A":
+		anyNAT = True
+	if sQR == "N/A":
+		anyQR = True
+	if sSBS == "N/A":
+		anySBS = True	
+	return courseDf[((courseDf["ACP"] == sACP) | anyACP) & ((courseDf["CS"] == sCS) | anyCS) & ((courseDf["HUM"] == sHUM) | anyHUM) & ((courseDf["NAT"] == sNAT) | anyNAT) & ((courseDf["QR"] == sQR) | anyQR) & ((courseDf["SBS"] == sSBS) | anySBS)][["Name","Number","GPA","Total Students"]].sort_values('GPA',ascending = False).head(5).to_json(orient='records')
 
 app = Flask(__name__)
 
