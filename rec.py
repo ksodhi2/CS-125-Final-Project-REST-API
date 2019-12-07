@@ -35,7 +35,7 @@ def get_gened_for_attribute(sACP,sCS,sHUM,sNAT,sQR,sSBS):
 		anyQR = True
 	if sSBS == "N/A":
 		anySBS = True	
-	return courseDf[((courseDf["ACP"] == sACP) | anyACP) & ((courseDf["CS"] == sCS) | anyCS) & ((courseDf["HUM"] == sHUM) | anyHUM) & ((courseDf["NAT"] == sNAT) | anyNAT) & ((courseDf["QR"] == sQR) | anyQR) & ((courseDf["SBS"] == sSBS) | anySBS)][["Name","Number","GPA","Total Students"]].sort_values('GPA',ascending = False).head(5).to_json(orient='records')
+	return courseDf[((courseDf["ACP"] == sACP) | anyACP) & ((courseDf["CS"] == sCS) | anyCS) & ((courseDf["HUM"] == sHUM) | anyHUM) & ((courseDf["NAT"] == sNAT) | anyNAT) & ((courseDf["QR"] == sQR) | anyQR) & ((courseDf["SBS"] == sSBS) | anySBS)][["Name","Number","GPA","Total Students"]].sort_values('GPA',ascending = False).to_json(orient='records')
 
 app = Flask(__name__)
 
